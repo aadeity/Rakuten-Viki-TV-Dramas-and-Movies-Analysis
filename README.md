@@ -122,14 +122,6 @@ For example:
 <p align="center">
   <img src="images/viki_overview_dashboard.png" width="900" alt="Viki Overview Dashboard"/>
 </p>
-## ❓ Key Business Questions & SQL Answers
-
-This section contains the core business questions and the SQL queries used to answer them.  
-Under each query, you can add:
-
-- 📸 **Screenshot** (pgAdmin / Power BI visual)  
-- 📝 **Short explanation** (“From the chart we see that…”)
-
 ---
 
 ### 🟦 1. Is Korean content dominating the catalog?
