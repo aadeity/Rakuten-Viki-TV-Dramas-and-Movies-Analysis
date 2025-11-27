@@ -150,3 +150,6 @@ FROM country_exploded
 GROUP BY country_code
 ORDER BY title_count DESC;
 
+### 🟦 1. Is Korean content dominating the catalog?
+
+#### SQL Query
