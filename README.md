@@ -237,6 +237,9 @@ GROUP BY country_code
 ORDER BY title_count DESC
 LIMIT 10;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/24b08746-82ef-442a-9a17-d1d141c5eeea" />
+
 
 ### 🟦5. Which genres dominate the platform?
 #### SQL Query
@@ -262,6 +265,9 @@ GROUP BY genre
 ORDER BY title_count DESC
 LIMIT 20;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/6bdb8759-eb74-4d19-94f6-dfb73dd17d0c" />
+
 ### 🟦6. How is content positioned by age certification?
 #### SQL Query
 
@@ -273,6 +279,8 @@ FROM viki.titles
 GROUP BY age_certification
 ORDER BY title_count DESC;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/1ff98664-7982-4a56-aea7-a4692bd53b6b" />
 
 ### 🟦7. What does runtime distribution reveal about format strategy?
 #### SQL Query
@@ -293,6 +301,8 @@ GROUP BY type, runtime_bucket
 ORDER BY type, runtime_bucket;
 
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/9fe1fa2f-ddac-4f29-9212-76fb660e8940" />
 
 
 ### 🟦8. Which titles perform best by IMDb and TMDB metrics?
@@ -310,6 +320,8 @@ WHERE imdb_score IS NOT NULL
 ORDER BY imdb_score DESC NULLS LAST, imdb_votes DESC NULLS LAST
 LIMIT 20;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/2a3a20d5-3574-4daa-93dd-0a594708ef94" />
 
 #### SQL Query--Most Popular (TMDB)
 ```sql
@@ -324,6 +336,8 @@ WHERE tmdb_popu IS NOT NULL
 ORDER BY tmdb_popu DESC NULLS LAST, tmdb_score DESC NULLS LAST
 LIMIT 20;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/d88d1ab9-95cd-4485-95b4-26e00a28e469" />
 
 
 ### 🟦9. Do certain actors repeatedly appear in successful titles?
@@ -347,9 +361,10 @@ JOIN top_titles t
 WHERE c.role = 'ACTOR'
 GROUP BY c.name
 ORDER BY appearances_in_top_titles DESC
-LIMIT 20;
+LIMIT 10;
 ```
-
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/eac4de87-d6fa-48c8-9f62-dd67a84a7b58" />
 
 ### 🟦10. Do certain directors repeatedly appear in successful titles?
 #### SQL Query
@@ -373,6 +388,8 @@ GROUP BY c.name
 ORDER BY directed_top_titles DESC
 LIMIT 20;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/80e3c603-aea6-42c4-b1d1-ad50aaf49632" />
 
 
 ### 🟦11. Are there content gaps where demand exceeds supply?
@@ -405,6 +422,8 @@ GROUP BY genre
 HAVING COUNT(DISTINCT id) >= 5
 ORDER BY avg_imdb_score DESC;
 ```
+# Results:
+<img width="550"  alt="image" src="https://github.com/user-attachments/assets/659a186a-f898-4682-9125-e6afd41b4030" />
 
 
 ### 🟦12. How do ratings vary by country and genre?
@@ -436,6 +455,8 @@ GROUP BY country_code
 ORDER BY avg_imdb_score DESC NULLS LAST;
 ```
 
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/68072d86-9e4c-4da1-9b56-0cc4794c61b2" />
 
 #### SQL Query – Ratings by Genre
 ```sql
@@ -464,3 +485,5 @@ FROM genre_exploded
 GROUP BY genre
 ORDER BY avg_imdb_score DESC NULLS LAST;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/9e02c1c3-b272-4489-a1c2-113d087586d4" />
