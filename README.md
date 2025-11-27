@@ -122,3 +122,42 @@ For example:
 <p align="center">
   <img src="images/viki_overview_dashboard.png" width="900" alt="Viki Overview Dashboard"/>
 </p>
+## ❓ Key Business Questions & SQL Answers
+
+This section contains the core business questions and the SQL queries used to answer them.  
+Under each query, you can add:
+
+- 📸 **Screenshot** (pgAdmin / Power BI visual)  
+- 📝 **Short explanation** (“From the chart we see that…”)
+
+---
+
+### 🟦 1. Is Korean content dominating the catalog?
+
+#### ✅ SQL Query
+
+```sql
+WITH country_exploded AS (
+  SELECT
+    id,
+    trim(upper(regexp_replace(
+      unnest(string_to_array(
+        regexp_replace(production, '[\[\]]', '', 'g'),
+        ','
+      )),
+      '''', '', 'g'
+    ))) AS country_code
+  FROM viki.titles
+)
+SELECT
+  country_code,
+  COUNT(DISTINCT id) AS title_count,
+  ROUND(
+    100.0 * COUNT(DISTINCT id) / NULLIF((SELECT COUNT(*) FROM viki.titles), 0),
+    2
+  ) AS pct_of_catalog
+FROM country_exploded
+GROUP BY country_code
+ORDER BY title_count DESC;
+
+### 🟦 2. How has overall content production evolved over time?
