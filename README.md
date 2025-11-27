@@ -149,7 +149,7 @@ SELECT
 FROM country_exploded
 GROUP BY country_code
 ORDER BY title_count DESC;
-
+```
 ---
 
 ### 🟦 2. How has overall content production evolved over time?
