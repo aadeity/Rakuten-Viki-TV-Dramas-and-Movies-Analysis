@@ -359,11 +359,11 @@ ORDER BY type, runtime_bucket;
 # Analysis:
 The runtime distribution paints a very clear picture of how Viki structures its catalog and it strongly reinforces the platform’s identity as a home for long-form storytelling, especially through Asian dramas.
 
-For movies, the data reveals a heavy concentration in the 90+ minute category, with 383 titles falling into feature-length territory. This aligns perfectly with traditional film standards and indicates that Viki’s movie offerings are largely full-length cinematic experiences rather than short-form or experimental content. Meanwhile, shorter movie formats—such as those under 60 minutes are extremely rare, further emphasizing Viki’s focus on polished, narrative-rich productions.
+For movies, the data reveals a heavy concentration in the 90+ minute category, with 383 titles falling into feature-length territory. This aligns perfectly with traditional film standards and indicates that Viki’s movie offerings are largely full-length cinematic experiences rather than short-form or experimental content. Meanwhile, shorter movie formats such as those under 60 minutes are extremely rare, further emphasizing Viki’s focus on polished, narrative-rich productions.
 
 On the other hand, shows follow a distinctly different pattern that mirrors the structure of Korean dramas, Chinese dramas, and other Asian episodic formats. The majority of shows fall within the 30–59 minute (670 titles) and 60–89 minute (546 titles) buckets. This is exactly the typical runtime range for scripted episodes in Asia, where single-episode durations often exceed Western standards to allow for deeper emotional arcs and more detailed character development.
 
-Interestingly, Viki hosts 218 short-form shows (<30 minutes)—a sign that bite-sized drama and variety content is emerging but not yet dominant. These could reflect web dramas, short comedic sketches, or youth-focused mini-series that reinforce Viki’s appeal to younger audiences looking for quicker, more casual viewing experiences.
+Interestingly, Viki hosts 218 short-form shows (<30 minutes) a sign that bite-sized drama and variety content is emerging but not yet dominant. These could reflect web dramas, short comedic sketches, or youth-focused mini-series that reinforce Viki’s appeal to younger audiences looking for quicker, more casual viewing experiences.
 
 Conversely, only 36 shows exceed 90 minutes, highlighting that long-form episodic content is not as common. This low number underscores the structured, episode-based nature of Asian dramas, where length is distributed across episodes rather than single, extended installments.
 
