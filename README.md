@@ -12,7 +12,6 @@
 
 
 <p align="center">
-  <!-- Replace this with your real banner or dashboard image -->
   <img src="images/viki_dashboard_banner.png" width="550" alt="Viki Analytics Dashboard"/>
 </p>
 
@@ -33,7 +32,6 @@
 - [📊 Dashboard](#-dashboard)
 - [❓ Key Business Questions & SQL Answers](#-key-business-questions--sql-answers)
 - [📈 Results & Impact](#-results--impact)
-- [🔮 Future Enhancements](#-future-enhancements)
 
 ---
 
@@ -91,7 +89,6 @@ This analysis delivers insights that directly support **content acquisition, mar
 
 ## 🚀 Approach
 
-> Minimal description (focus is on SQL & insights).
 
 1️⃣ **Data Preparation**  
 - Loaded `titles` and `credits` CSV files into PostgreSQL  
@@ -112,12 +109,10 @@ This analysis delivers insights that directly support **content acquisition, mar
 
 ## 📊 Dashboard
 
-> 🖼️ **Add your Power BI dashboard screenshots here**
-
 For example:
 
 <p align="center">
-  <img src="images/viki_overview_dashboard.png" width="900" alt="Viki Overview Dashboard"/>
+  <img src="images/viki_overview_dashboard.jpg" width="900" alt="Viki Overview Dashboard"/>
 </p>
 
 ---
