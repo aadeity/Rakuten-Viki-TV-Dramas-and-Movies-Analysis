@@ -150,6 +150,314 @@ FROM country_exploded
 GROUP BY country_code
 ORDER BY title_count DESC;
 
-### 🟦 1. Is Korean content dominating the catalog?
+---
+
+### 🟦 2. How has overall content production evolved over time?
 
 #### SQL Query
+
+```sql
+SELECT
+  release_year,
+  COUNT(*) AS titles
+FROM viki.titles
+WHERE release_year IS NOT NULL
+GROUP BY release_year
+ORDER BY release_year;
+
+---
+
+### 🟦 3. How do Korean vs Chinese growth trends compare?
+
+#### SQL Query
+
+```sql
+WITH country_exploded AS (
+  SELECT
+    id,
+    release_year,
+    trim(upper(regexp_replace(
+      unnest(string_to_array(
+        regexp_replace(production, '[\[\]]', '', 'g'),
+        ','
+      )),
+      '''', '', 'g'
+    ))) AS country_code
+  FROM viki.titles
+  WHERE release_year IS NOT NULL
+),
+year_totals AS (
+  SELECT
+    release_year,
+    COUNT(DISTINCT id) AS total_titles
+  FROM viki.titles
+  WHERE release_year IS NOT NULL
+  GROUP BY release_year
+)
+SELECT 
+  yt.release_year,
+  COUNT(DISTINCT CASE WHEN country_code = 'KR' THEN id END) AS korea_titles,
+  COUNT(DISTINCT CASE WHEN country_code = 'CN' THEN id END) AS china_titles,
+  yt.total_titles,
+  ROUND(
+    100.0 * COUNT(DISTINCT CASE WHEN country_code = 'KR' THEN id END)
+      / yt.total_titles,
+    2
+  ) AS korea_share_pct
+FROM year_totals yt
+LEFT JOIN country_exploded ce
+  ON ce.release_year = yt.release_year
+GROUP BY yt.release_year, yt.total_titles
+ORDER BY yt.release_year;
+---
+
+### 🟦4. Which countries besides Korea & China matter?
+#### SQL Query
+
+```sql
+WITH country_exploded AS (
+  SELECT
+    trim(upper(regexp_replace(
+      unnest(string_to_array(
+        regexp_replace(production, '[\[\]]', '', 'g'),
+        ','
+      )),
+      '''', '', 'g'
+    ))) AS country_code
+  FROM viki.titles
+)
+SELECT
+  country_code,
+  COUNT(*) AS title_count
+FROM country_exploded
+WHERE country_code NOT IN ('KR', 'CN')
+GROUP BY country_code
+ORDER BY title_count DESC
+LIMIT 10;
+---
+
+### 🟦5. Which genres dominate the platform?
+#### SQL Query
+
+```sql
+WITH genre_exploded AS (
+  SELECT
+    trim(unnest(string_to_array(
+      regexp_replace(
+        regexp_replace(genres, '\[|\]', '', 'g'),
+        '''',
+        ''
+      ),
+      ','
+    ))) AS genre
+  FROM viki.titles
+)
+SELECT
+  genre,
+  COUNT(*) AS title_count
+FROM genre_exploded
+GROUP BY genre
+ORDER BY title_count DESC
+LIMIT 20;
+---
+
+### 🟦6. How is content positioned by age certification?
+#### SQL Query
+
+```sql
+SELECT
+  age_certification,
+  COUNT(*) AS title_count
+FROM viki.titles
+GROUP BY age_certification
+ORDER BY title_count DESC;
+---
+
+### 🟦7. What does runtime distribution reveal about format strategy?
+#### SQL Query
+
+```sql
+SELECT 
+  type,
+  CASE 
+    WHEN runtime < 30 THEN '<30 min'
+    WHEN runtime BETWEEN 30 AND 59 THEN '30–59 min'
+    WHEN runtime BETWEEN 60 AND 89 THEN '60–89 min'
+    WHEN runtime >= 90 THEN '90+ min'
+    ELSE 'Unknown'
+  END AS runtime_bucket,
+  COUNT(*) AS title_count
+FROM viki.titles
+GROUP BY type, runtime_bucket
+ORDER BY type, runtime_bucket;
+
+---
+
+### 🟦8. Which titles perform best by IMDb and TMDB metrics?
+#### SQL Query-– Top-Rated (IMDb)
+
+```sql
+SELECT
+  title,
+  release_year,
+  production,
+  imdb_score,
+  imdb_votes
+FROM viki.titles
+WHERE imdb_score IS NOT NULL
+ORDER BY imdb_score DESC NULLS LAST, imdb_votes DESC NULLS LAST
+LIMIT 20;
+
+---
+#### SQL Query--Most Popular (TMDB)
+```sql
+SELECT
+  title,
+  release_year,
+  production,
+  tmdb_popu,
+  tmdb_score
+FROM viki.titles
+WHERE tmdb_popu IS NOT NULL
+ORDER BY tmdb_popu DESC NULLS LAST, tmdb_score DESC NULLS LAST
+LIMIT 20;
+
+---
+
+### 🟦9. Do certain actors repeatedly appear in successful titles?
+#### SQL Query
+
+
+```sql
+WITH top_titles AS (
+  SELECT id
+  FROM viki.titles
+  WHERE imdb_score IS NOT NULL
+  ORDER BY imdb_score DESC
+  LIMIT 200
+)
+SELECT
+  c.name,
+  COUNT(*) AS appearances_in_top_titles
+FROM viki.credits c
+JOIN top_titles t
+  ON c.id = t.id
+WHERE c.role = 'ACTOR'
+GROUP BY c.name
+ORDER BY appearances_in_top_titles DESC
+LIMIT 20;
+
+---
+
+### 🟦10. Do certain directors repeatedly appear in successful titles?
+#### SQL Query
+
+```sql
+WITH top_titles AS (
+  SELECT id
+  FROM viki.titles
+  WHERE imdb_score IS NOT NULL
+  ORDER BY imdb_score DESC
+  LIMIT 200
+)
+SELECT
+  c.name,
+  COUNT(*) AS directed_top_titles
+FROM viki.credits c
+JOIN top_titles t
+  ON c.id = t.id
+WHERE c.role = 'DIRECTOR'
+GROUP BY c.name
+ORDER BY directed_top_titles DESC
+LIMIT 20;
+
+---
+
+### 🟦11. Are there content gaps where demand exceeds supply?
+#### SQL Query
+
+```sql
+WITH genre_exploded AS (
+  SELECT
+    t.id,
+    trim(unnest(string_to_array(
+      regexp_replace(
+        regexp_replace(t.genres, '\[|\]', '', 'g'),
+        '''',
+        ''
+      ),
+      ','
+    ))) AS genre,
+    t.imdb_score
+  FROM viki.titles t
+)
+SELECT
+  genre,
+  COUNT(DISTINCT id) AS title_count,
+  ROUND(
+    AVG(imdb_score) FILTER (WHERE imdb_score IS NOT NULL),
+    2
+  ) AS avg_imdb_score
+FROM genre_exploded
+GROUP BY genre
+HAVING COUNT(DISTINCT id) >= 5
+ORDER BY avg_imdb_score DESC;
+
+---
+
+### 🟦12. How do ratings vary by country and genre?
+#### SQL Query– Ratings by Country
+
+```sql
+WITH country_exploded AS (
+  SELECT
+    id,
+    trim(upper(regexp_replace(
+      unnest(string_to_array(
+        regexp_replace(production, '[\[\]]', '', 'g'),
+        ','
+      )),
+      '''', '', 'g'
+    ))) AS country_code,
+    imdb_score
+  FROM viki.titles
+)
+SELECT
+  country_code,
+  COUNT(DISTINCT id) AS rated_titles,
+  ROUND(
+    AVG(imdb_score) FILTER (WHERE imdb_score IS NOT NULL),
+    2
+  ) AS avg_imdb_score
+FROM country_exploded
+GROUP BY country_code
+ORDER BY avg_imdb_score DESC NULLS LAST;
+
+---
+
+#### SQL Query – Ratings by Genre
+```sql
+WITH genre_exploded AS (
+  SELECT
+    t.id,
+    trim(unnest(string_to_array(
+      regexp_replace(
+        regexp_replace(t.genres, '\[|\]', '', 'g'),
+        '''',
+        ''
+      ),
+      ','
+    ))) AS genre,
+    t.imdb_score
+  FROM viki.titles t
+)
+SELECT
+  genre,
+  COUNT(DISTINCT id) AS rated_titles,
+  ROUND(
+    AVG(imdb_score) FILTER (WHERE imdb_score IS NOT NULL),
+    2
+  ) AS avg_imdb_score
+FROM genre_exploded
+GROUP BY genre
+ORDER BY avg_imdb_score DESC NULLS LAST;
