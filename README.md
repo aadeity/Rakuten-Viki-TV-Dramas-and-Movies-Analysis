@@ -153,6 +153,11 @@ ORDER BY title_count DESC;
 # Results:
 <img width="550"  alt="image" src="https://github.com/user-attachments/assets/62ecbcc4-bb51-4eca-af3e-20f7ec02d559" />
 
+# Analysis:
+Korean content accounts for over half of Viki’s entire catalog, making it the platform’s strongest content pillar. This reflects not only the global momentum behind Korean dramas but also Viki’s strategic emphasis on licensing Korean titles to meet rising demand.
+In contrast, Chinese content, while still substantial, forms a smaller but significant portion of the library, indicating a growing yet secondary source of viewership.
+Together, these trends highlight Viki’s reliance on East Asian markets and pinpoint where future licensing decisions can be optimized.
+
 ### 🟦 2. How has overall content production evolved over time?
 
 #### SQL Query
