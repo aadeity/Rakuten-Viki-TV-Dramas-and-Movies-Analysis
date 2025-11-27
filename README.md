@@ -150,7 +150,6 @@ FROM country_exploded
 GROUP BY country_code
 ORDER BY title_count DESC;
 ```
----
 
 ### 🟦 2. How has overall content production evolved over time?
 
@@ -164,8 +163,7 @@ FROM viki.titles
 WHERE release_year IS NOT NULL
 GROUP BY release_year
 ORDER BY release_year;
-
----
+```
 
 ### 🟦 3. How do Korean vs Chinese growth trends compare?
 
@@ -209,7 +207,7 @@ LEFT JOIN country_exploded ce
   ON ce.release_year = yt.release_year
 GROUP BY yt.release_year, yt.total_titles
 ORDER BY yt.release_year;
----
+```
 
 ### 🟦4. Which countries besides Korea & China matter?
 #### SQL Query
@@ -234,7 +232,7 @@ WHERE country_code NOT IN ('KR', 'CN')
 GROUP BY country_code
 ORDER BY title_count DESC
 LIMIT 10;
----
+```
 
 ### 🟦5. Which genres dominate the platform?
 #### SQL Query
@@ -259,8 +257,7 @@ FROM genre_exploded
 GROUP BY genre
 ORDER BY title_count DESC
 LIMIT 20;
----
-
+```
 ### 🟦6. How is content positioned by age certification?
 #### SQL Query
 
@@ -271,7 +268,7 @@ SELECT
 FROM viki.titles
 GROUP BY age_certification
 ORDER BY title_count DESC;
----
+```
 
 ### 🟦7. What does runtime distribution reveal about format strategy?
 #### SQL Query
@@ -291,7 +288,8 @@ FROM viki.titles
 GROUP BY type, runtime_bucket
 ORDER BY type, runtime_bucket;
 
----
+```
+
 
 ### 🟦8. Which titles perform best by IMDb and TMDB metrics?
 #### SQL Query-– Top-Rated (IMDb)
@@ -307,8 +305,8 @@ FROM viki.titles
 WHERE imdb_score IS NOT NULL
 ORDER BY imdb_score DESC NULLS LAST, imdb_votes DESC NULLS LAST
 LIMIT 20;
+```
 
----
 #### SQL Query--Most Popular (TMDB)
 ```sql
 SELECT
@@ -321,8 +319,8 @@ FROM viki.titles
 WHERE tmdb_popu IS NOT NULL
 ORDER BY tmdb_popu DESC NULLS LAST, tmdb_score DESC NULLS LAST
 LIMIT 20;
+```
 
----
 
 ### 🟦9. Do certain actors repeatedly appear in successful titles?
 #### SQL Query
@@ -346,8 +344,8 @@ WHERE c.role = 'ACTOR'
 GROUP BY c.name
 ORDER BY appearances_in_top_titles DESC
 LIMIT 20;
+```
 
----
 
 ### 🟦10. Do certain directors repeatedly appear in successful titles?
 #### SQL Query
@@ -370,8 +368,8 @@ WHERE c.role = 'DIRECTOR'
 GROUP BY c.name
 ORDER BY directed_top_titles DESC
 LIMIT 20;
+```
 
----
 
 ### 🟦11. Are there content gaps where demand exceeds supply?
 #### SQL Query
@@ -402,8 +400,8 @@ FROM genre_exploded
 GROUP BY genre
 HAVING COUNT(DISTINCT id) >= 5
 ORDER BY avg_imdb_score DESC;
+```
 
----
 
 ### 🟦12. How do ratings vary by country and genre?
 #### SQL Query– Ratings by Country
@@ -432,8 +430,8 @@ SELECT
 FROM country_exploded
 GROUP BY country_code
 ORDER BY avg_imdb_score DESC NULLS LAST;
+```
 
----
 
 #### SQL Query – Ratings by Genre
 ```sql
@@ -461,3 +459,4 @@ SELECT
 FROM genre_exploded
 GROUP BY genre
 ORDER BY avg_imdb_score DESC NULLS LAST;
+```
