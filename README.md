@@ -173,6 +173,7 @@ ORDER BY release_year;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/7d60bba9-2f17-414e-8e80-ee763da5c3f3" />
+
 # Analysis:
 The trend in content production on Rakuten Viki shows a remarkably clear story of growth, acceleration, and strategic expansion. For nearly three decades, production volumes remained minimal, with only a handful of titles released each year. This slow start is expected—Asian drama exports were limited, and global demand for Korean, Chinese, and other regional content had not yet surfaced.
 
@@ -254,6 +255,7 @@ LIMIT 10;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/24b08746-82ef-442a-9a17-d1d141c5eeea" />
+
 # Analysis:
 While Korean and Chinese titles undeniably dominate Viki’s catalog, the platform’s content diversity is far broader than these two giants alone. When we isolate all other producing countries, a fascinating secondary ecosystem emerges one that plays a crucial role in shaping Viki’s global appeal.
 
@@ -295,6 +297,7 @@ LIMIT 20;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/6bdb8759-eb74-4d19-94f6-dfb73dd17d0c" />
+
 # Analysis :
 The genre breakdown highlights one of Viki’s strongest competitive advantages , its ability to deliver emotionally resonant, story-driven content that appeals to global drama enthusiasts. The data shows that Drama is by far the most dominant genre, with over 800+ titles, reflecting Viki’s position as a leading destination for character-focused narratives and long-form storytelling typical in Asian entertainment industries.
 
@@ -319,6 +322,7 @@ ORDER BY title_count DESC;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/1ff98664-7982-4a56-aea7-a4692bd53b6b" />
+
 # Analysis :
 The age-certification distribution reveals an interesting pattern in Viki’s content strategy, reflecting both regional production norms and audience expectations for Asian dramas. A striking majority of titles over 1,630 entries—have no age rating listed. This is common among Asian streaming datasets, where age classifications are not consistently standardized across countries. While the absence of ratings limits granularity, it also highlights a clear opportunity for Viki to improve metadata completeness and support safer, more personalized recommendations.
 
@@ -382,6 +386,7 @@ LIMIT 20;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/2a3a20d5-3574-4daa-93dd-0a594708ef94" />
+
 # Analysis :
 The IMDb-ranked titles reflect shows and films that delivered exceptional emotional impact, storytelling depth, and audience satisfaction. These are the titles viewers felt strongly enough to rate 9.0+, placing them among the best Asian dramas available internationally.
 
@@ -469,6 +474,7 @@ LIMIT 10;
 ```
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/eac4de87-d6fa-48c8-9f62-dd67a84a7b58" />
+
 # Analysis :
 The analysis of the highest-rated titles reveals a clear pattern: a small group of seasoned Korean actors consistently appear in the most successful productions on Viki. These actors aren’t just familiar faces  they are reliable contributors to audience satisfaction and narrative quality, often elevating the projects they join.
 
@@ -548,6 +554,7 @@ ORDER BY avg_imdb_score DESC;
 ```
 # Results:
 <img width="550"  alt="image" src="https://github.com/user-attachments/assets/659a186a-f898-4682-9125-e6afd41b4030" />
+
 # Analysis :
 The genre–rating analysis reveals some of the most strategic insights for Rakuten Viki’s content planning. By comparing average IMDb scores with the number of available titles in each genre, we can identify where audience appreciation is high but supply is relatively limited — a clear indicator of unmet demand.
 
@@ -596,6 +603,7 @@ ORDER BY avg_imdb_score DESC NULLS LAST;
 
 # Results:
 <img width="550" alt="image" src="https://github.com/user-attachments/assets/68072d86-9e4c-4da1-9b56-0cc4794c61b2" />
+
 # Analysis : 
 The country-wise rating breakdown reveals clear differences in how audiences perceive content originating from different regions. Great Britain (GB), despite contributing only a handful of titles, leads with the highest average IMDb rating (7.32). This indicates a small but consistently strong output, suggesting that even limited content from GB resonates deeply with viewers.
 
