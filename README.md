@@ -151,7 +151,7 @@ GROUP BY country_code
 ORDER BY title_count DESC;
 ```
 # Results:
-<img width="850"  alt="image" src="https://github.com/user-attachments/assets/62ecbcc4-bb51-4eca-af3e-20f7ec02d559" />
+<img width="550"  alt="image" src="https://github.com/user-attachments/assets/62ecbcc4-bb51-4eca-af3e-20f7ec02d559" />
 
 ### 🟦 2. How has overall content production evolved over time?
 
