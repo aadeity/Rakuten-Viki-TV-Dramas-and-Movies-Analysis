@@ -1,10 +1,15 @@
 #  Rakuten Viki TV Dramas & Movies — Analytics & Content Strategy Dashboard
 
-    ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-    ![Python](https://img.shields.io/badge/Python-0A97F5?style=for-the-badge&logo=python&logoColor=white)
-    ![Power BI](https://img.shields.io/badge/Power%20BI-1F6FEB?style=for-the-badge&logo=powerbi&logoColor=white)
-    ![SQL](https://img.shields.io/badge/SQL-0088CC?style=for-the-badge)
-    ![Data%20Analytics](https://img.shields.io/badge/Data%20Analytics-00AEEF?style=for-the-badge)
+   <div align="center">
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Python](https://img.shields.io/badge/Python-0A97F5?style=for-the-badge&logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-1F6FEB?style=for-the-badge&logo=powerbi&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-0088CC?style=for-the-badge)
+![Data%20Analytics](https://img.shields.io/badge/Data%20Analytics-00AEEF?style=for-the-badge)
+
+</div>
+
 
 <p align="center">
   <!-- Replace this with your real banner or dashboard image -->
