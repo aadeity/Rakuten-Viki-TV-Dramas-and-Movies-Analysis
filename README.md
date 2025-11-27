@@ -13,7 +13,7 @@
 
 <p align="center">
   <!-- Replace this with your real banner or dashboard image -->
-  <img src="images/viki_dashboard_banner.png" width="850" alt="Viki Analytics Dashboard"/>
+  <img src="images/viki_dashboard_banner.png" width="550" alt="Viki Analytics Dashboard"/>
 </p>
 
 <p align="center">
