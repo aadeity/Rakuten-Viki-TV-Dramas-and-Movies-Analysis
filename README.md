@@ -110,23 +110,22 @@ This analysis delivers insights that directly support **content acquisition, mar
 - Added KPI cards, trend lines, bar charts, and drill-down tables  
 - Included slicers for **Country, Genre, Type, Release Year**  
 
----
-
 ## 📊 Dashboard
 
 > 🖼️ **Add your Power BI dashboard screenshots here**
 
 For example:
 
-```markdown
 <p align="center">
   <img src="images/viki_overview_dashboard.png" width="900" alt="Viki Overview Dashboard"/>
 </p>
+
 ---
 
 ### 🟦 1. Is Korean content dominating the catalog?
 
 #### SQL Query
+
 ```sql
 WITH country_exploded AS (
   SELECT
