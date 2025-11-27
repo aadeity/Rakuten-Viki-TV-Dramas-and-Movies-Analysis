@@ -166,6 +166,8 @@ WHERE release_year IS NOT NULL
 GROUP BY release_year
 ORDER BY release_year;
 ```
+# Results:
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/7d60bba9-2f17-414e-8e80-ee763da5c3f3" />
 
 ### 🟦 3. How do Korean vs Chinese growth trends compare?
 
